@@ -2,7 +2,7 @@ interface User {
   fullName: string;
   department: string;
   country: string;
-  status: boolean;
+  status: string;
   id: number;
 }
 
