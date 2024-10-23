@@ -74,7 +74,6 @@ const EditUsers = () => {
       country: "США",
       status: "DISABLED",
     },
-    // ... остальные пользователи
   ]);
 
   const [selectedUser, setSelectedUser] = useState<User | null>(null);

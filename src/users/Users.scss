@@ -1,0 +1,138 @@
+@mixin fonts {
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #5E626B;
+  }
+
+
+.users-add {
+    padding: 0 80px 80px;
+    margin: 80px auto;
+    border: 1px solid black;
+    width: 1300px;
+
+    .users-inner {
+
+        .users-title {
+            .users-title-text {
+                margin-top: 60px;
+                font-size: 24px;
+                font-weight: 550;
+                color: #000000;
+                letter-spacing: 8px;
+                text-align: center;
+                font-family: "Karla", sans-serif;
+            }
+        }
+
+        .warning-about-steps {
+            .warning-text {
+                font-size: 14px;
+                font-weight: 300;
+                font-family: "Rubik", sans-serif;
+                color: #1B2438;
+
+            }
+        }
+
+        .filter-choice {
+            display: flex;
+            margin-top: 12px;
+            gap: 20px;
+
+            .select-field {
+                width: 220px;
+                height: 48px;
+                padding-left: 24px;
+                border: solid grey 1px;
+                color: #C2C2C2;
+                font-family: "Rubik", sans-serif;
+                font-size: 14px;
+            }
+        }
+
+        .reset-changes {
+            .reset-changes-btn {
+                padding: 14px 14px 6px 14px;
+                background-color: white;
+                border: solid 1px grey;
+                cursor: pointer;
+            }
+        }
+
+        .add-user {
+            padding: 14px 14px 6px 14px;
+            background-color: white;
+            border: solid 1px grey;
+            margin-left: 170px;
+            cursor: pointer;
+
+            .add-user-btn {
+                padding: 0px 45px 14px 35px;
+                border: none;
+                background-color: inherit;
+                font-family: "Rubik", sans-serif;
+                font-size: 14px;
+                color: #000000;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .filter-window {
+        border: solid 1px #E3E8EE;
+        padding: 28px 38px 28px 38px;
+        margin-top: 28px;
+        display: flex;
+        justify-content: space-between;
+
+        .filter-field {
+            display: flex;
+            gap: 149px;
+
+            .filter-title {
+                font-weight: 700;
+                font-size: 14px;
+                font-family: "Karla", sans-serif;
+                color: #000000;
+            }
+        }
+    }
+
+    .users-field {
+        display: flex;
+        justify-content: space-between;
+
+        .users-block-item {
+            display: flex;
+            gap: 160px;
+             text-align: center;
+             margin-top: 20px;
+ 
+
+
+            .user-name {text-align: center;
+              
+                @include fonts;
+            }
+
+            .user-departament {
+             
+        
+                @include fonts;
+            }
+
+            .user-country {
+              text-align: center;
+                @include fonts;
+            }
+
+            .user-status {
+                text-align: center;
+                @include fonts;
+            }
+
+        }
+    }
+}

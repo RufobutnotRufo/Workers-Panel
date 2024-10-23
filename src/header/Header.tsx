@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import './Header.scss'
 
 const Header = () => {
+
+  const [stateBoll,setState] = useState(false)
   return (
     <div className="header">
       <div className="header-inner">
