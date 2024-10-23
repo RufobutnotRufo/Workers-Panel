@@ -1,0 +1,63 @@
+.edit-users {
+  padding: 0 80px 80px;
+  margin: 80px auto;
+  border: 1px solid black;
+  width: 1300px;
+}
+.edit-users .edit-users-inner .edit-users-title {
+  font-weight: 700;
+  margin-top: 60px;
+  text-align: center;
+  color: #000000;
+  font-family: "Karla", sans-serif;
+  letter-spacing: 8px;
+}
+.edit-users .edit-users-inner .edit-users-select {
+  margin-top: 20px;
+}
+.edit-users .edit-users-inner .edit-users-select .edit-users-select-label {
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Rubik", sans-serif;
+  color: #5E626B;
+}
+.edit-users .edit-users-inner .edit-users-select .edit-users-select-field {
+  width: 500px;
+  height: 48px;
+}
+.edit-users .edit-users-inner .edit-users-info-title {
+  margin-top: 60px;
+  font-family: "Rubik", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000000;
+}
+.edit-users .edit-users-inner .edit-users-info {
+  display: flex;
+  gap: 40px;
+  margin-top: 20px;
+}
+.edit-users .edit-users-inner .edit-users-info .edit-users-info-field {
+  display: flex;
+  flex-direction: column;
+}
+.edit-users .edit-users-inner .edit-users-info .edit-users-info-field .edit-users-info-label {
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #5E626B;
+}
+.edit-users .edit-users-inner .edit-users-info .edit-users-info-field .edit-users-info-input {
+  width: 500px;
+  height: 48px;
+}
+.edit-users .edit-users-inner .user-field-left {
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+}
+.edit-users .edit-users-inner .user-field-right {
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+}/*# sourceMappingURL=EditUsers.css.map */

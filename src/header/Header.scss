@@ -1,0 +1,36 @@
+@mixin button-styles {
+    font-size: 14px;
+    font-family: "Rubik", sans-serif;
+    color: #000000;
+    padding: 14px 67px;
+    background-color: white;
+    border: solid 1px #C4C4C4;
+    cursor: pointer;
+
+    &:hover {
+        background-color: grey;
+    }
+}
+
+.header-inner {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 20px;
+
+    .edit-field {
+        .edit-users-btn {
+            @include button-styles;
+        }
+    }
+
+    .users {
+        .users-btn {
+            @include button-styles;
+        }
+    }
+}
+
+.line{
+    margin-top: 20px;
+}
