@@ -1,138 +1,129 @@
 @mixin fonts {
-    font-family: "Rubik", sans-serif;
-    font-weight: 400;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #5e626b;
+}
+
+.users-add {
+  padding: 0 80px 80px;
+  margin: 80px auto;
+  width: 1300px;
+
+  .users-inner {
+    .users-title-text {
+      margin-top: 60px;
+      font-size: 24px;
+      font-weight: 550;
+      color: #000000;
+      letter-spacing: 8px;
+      text-align: center;
+      font-family: "Karla", sans-serif;
+    }
+
+    .warning-text {
+      font-size: 14px;
+      font-weight: 300;
+      color: #1b2438;
+    }
+
+    .filter-choice {
+      display: flex;
+      margin-top: 12px;
+      gap: 20px;
+
+      .select-field {
+        width: 220px;
+        height: 48px;
+        padding-left: 24px;
+        border: 1px solid grey;
+        color: #c2c2c2;
+        font-family: "Rubik", sans-serif;
+        font-size: 14px;
+      }
+
+      .reset-changes-btn {
+        padding: 14px;
+        background-color: white;
+        border: 1px solid grey;
+        cursor: pointer;
+      }
+
+      .add-user-btn {
+        background-color: inherit;
+        font-family: "Rubik", sans-serif;
+        font-size: 14px;
+        color: #000000;
+        cursor: pointer;
+        border: solid grey 1px;
+        padding: 14px 25px;
+      }
+    }
+
+    .user-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+
+      th,
+      td {
+        text-align: left;
+        padding: 8px;
+      }
+
+      th {
+        font-weight: bold;
+        text-align: center;
+      }
+
+      td {
+        text-align: center;
+      }
+    }
+  }
+
+  .user-table {
+    border: solid 1px grey;
+
+    .users-items {
+      border: solid 1px grey;
+
+      .users-item {
+        padding: 30px;
+        font-size: 14px;
+        font-weight: 400;
+        font-family: "Rubik", sans-serif;
+        color: #5E626B;
+      }
+    }
+  }
+
+  .user-field {
+    .user-field-item {
+      margin-bottom: 50px;
+    }
+  }
+
+  .user-field-item {
     font-size: 14px;
+    font-weight: 400;
+    font-family: "Rubik", sans-serif;
     color: #5E626B;
   }
 
-
-.users-add {
-    padding: 0 80px 80px;
-    margin: 80px auto;
-    border: 1px solid black;
-    width: 1300px;
-
-    .users-inner {
-
-        .users-title {
-            .users-title-text {
-                margin-top: 60px;
-                font-size: 24px;
-                font-weight: 550;
-                color: #000000;
-                letter-spacing: 8px;
-                text-align: center;
-                font-family: "Karla", sans-serif;
-            }
-        }
-
-        .warning-about-steps {
-            .warning-text {
-                font-size: 14px;
-                font-weight: 300;
-                font-family: "Rubik", sans-serif;
-                color: #1B2438;
-
-            }
-        }
-
-        .filter-choice {
-            display: flex;
-            margin-top: 12px;
-            gap: 20px;
-
-            .select-field {
-                width: 220px;
-                height: 48px;
-                padding-left: 24px;
-                border: solid grey 1px;
-                color: #C2C2C2;
-                font-family: "Rubik", sans-serif;
-                font-size: 14px;
-            }
-        }
-
-        .reset-changes {
-            .reset-changes-btn {
-                padding: 14px 14px 6px 14px;
-                background-color: white;
-                border: solid 1px grey;
-                cursor: pointer;
-            }
-        }
-
-        .add-user {
-            padding: 14px 14px 6px 14px;
-            background-color: white;
-            border: solid 1px grey;
-            margin-left: 170px;
-            cursor: pointer;
-
-            .add-user-btn {
-                padding: 0px 45px 14px 35px;
-                border: none;
-                background-color: inherit;
-                font-family: "Rubik", sans-serif;
-                font-size: 14px;
-                color: #000000;
-                cursor: pointer;
-            }
-        }
+  .user-field-item-btn {
+    .user-field-item-btn-delete {
+      border: none;
+      background-color: inherit;
+      cursor: pointer;
     }
+  }
 
-    .filter-window {
-        border: solid 1px #E3E8EE;
-        padding: 28px 38px 28px 38px;
-        margin-top: 28px;
-        display: flex;
-        justify-content: space-between;
+  position: relative; 
+}
 
-        .filter-field {
-            display: flex;
-            gap: 149px;
-
-            .filter-title {
-                font-weight: 700;
-                font-size: 14px;
-                font-family: "Karla", sans-serif;
-                color: #000000;
-            }
-        }
-    }
-
-    .users-field {
-        display: flex;
-        justify-content: space-between;
-
-        .users-block-item {
-            display: flex;
-            gap: 160px;
-             text-align: center;
-             margin-top: 20px;
- 
-
-
-            .user-name {text-align: center;
-              
-                @include fonts;
-            }
-
-            .user-departament {
-             
-        
-                @include fonts;
-            }
-
-            .user-country {
-              text-align: center;
-                @include fonts;
-            }
-
-            .user-status {
-                text-align: center;
-                @include fonts;
-            }
-
-        }
-    }
+.dimmed {
+  opacity: 0.5; 
+  pointer-events: none; 
+  background-color: #cccdce;
 }

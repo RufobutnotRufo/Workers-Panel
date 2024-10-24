@@ -1,263 +1,171 @@
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import "./Users.scss";
 import busketSvg from "../users/ri_delete-bin-3-line.svg";
-import User from "../Types";
+import { MyContext } from "../useContext/Context";
+import AddUser from "../addUser/addUser";
+
+interface User {
+  id?: number;
+  fullName?: string;
+  department?: string;
+  country?: string;
+  status?: string;
+}
 
 const Users: React.FC = () => {
-  const [selectCountry, setSelectCountry] = useState([
-    {
-      name: "Ukraine",
-      value: "UA",
-    },
-    {
-      name: "United States",
-      value: "US",
-    },
-    {
-      name: "Canada",
-      value: "CA",
-    },
-    {
-      name: "Germany",
-      value: "DE",
-    },
-    {
-      name: "France",
-      value: "FR",
-    },
-    {
-      name: "Australia",
-      value: "AU",
-    },
-    {
-      name: "Japan",
-      value: "JP",
-    },
-    {
-      name: "United Kingdom",
-      value: "GB",
-    },
-    {
-      name: "China",
-      value: "CN",
-    },
-    {
-      name: "India",
-      value: "IN",
-    },
-  ]);
+  const { users, setUsers, modalWindowToggle, setModalWindowToggle } =
+    useContext(MyContext);
 
-  const countrySelect = [
-    {
-      name: "Human Resources",
-      value: "HR",
-    },
-    {
-      name: "Finance",
-      value: "FIN",
-    },
-    {
-      name: "Information Technology",
-      value: "IT",
-    },
-    {
-      name: "Marketing",
-      value: "MKT",
-    },
-    {
-      name: "Sales",
-      value: "SAL",
-    },
-    {
-      name: "Customer Support",
-      value: "CS",
-    },
-    {
-      name: "Research and Development",
-      value: "R&D",
-    },
-    {
-      name: "Operations",
-      value: "OPS",
-    },
-    {
-      name: "Legal",
-      value: "LEG",
-    },
-    {
-      name: "Product Management",
-      value: "PM",
-    },
-  ];
+  const [filteredUsers, setFilteredUsers] = useState<User[]>(users);
+  const [selectedCountry, setSelectedCountry] = useState<string>("ALL");
+  const [selectedStatus, setSelectedStatus] = useState<string>("ALL");
+  const [selectedDepartment, setSelectedDepartment] = useState<string>("ALL");
 
-  const statuses = [
-    {
-      name: "All statuses",
-      value: "ALL",
-    },
-    {
-      name: "Active",
-      value: "ACTIVE",
-    },
-    {
-      name: "Disabled",
-      value: "DISABLED",
-    },
-  ];
+  const getUniqueOptions = (key: keyof User) => {
+    const uniqueValues = Array.from(
+      new Set(users.map((user: any) => user[key]))
+    );
+    return uniqueValues.map((value) => ({ value, name: value }));
+  };
 
-  const [users, setUsers] = useState<User[]>([
-    {
-      id: 1,
-      fullName: "Иван Иванов",
-      department: "Маркетинг",
-      country: "Украина",
-      status: "DISABLED",
-    },
-    {
-      id: 2,
-      fullName: "Светлана Петрова",
-      department: "Продажи",
-      country: "США",
-      status: "ACTIVE",
-    },
-    {
-      id: 3,
-      fullName: "Алексей Смирнов",
-      department: "Разработка",
-      country: "Украина",
-      status: "ACTIVE",
-    },
-    {
-      id: 4,
-      fullName: "Елена Кузнецова",
-      department: "Дизайн",
-      country: "США",
-      status: "DISABLED",
-    },
-    {
-      id: 5,
-      fullName: "Дмитрий Сидоров",
-      department: "Поддержка",
-      country: "Украина",
-      status: "DISABLED",
-    },
-    {
-      id: 6,
-      fullName: "Анна Васильева",
-      department: "HR",
-      country: "США",
-      status: "DISABLED",
-    },
-    {
-      id: 7,
-      fullName: "Михаил Федоров",
-      department: "Управление",
-      country: "Украина",
-      status: "ACTIVE",
-    },
-    {
-      id: 8,
-      fullName: "Ольга Николаева",
-      department: "Аналитика",
-      country: "США",
-      status: "DISABLED",
-    },
-    {
-      id: 9,
-      fullName: "Сергей Павлов",
-      department: "Логистика",
-      country: "Украина",
-      status: "ACTIVE",
-    },
-    {
-      id: 10,
-      fullName: "Татьяна Романова",
-      department: "Финансы",
-      country: "США",
-      status: "DISABLED",
-    },
-  ]);
+  const countries = getUniqueOptions("country");
+  const departments = getUniqueOptions("department");
+  const statuses = getUniqueOptions("status");
+
+  const filterUsers = () => {
+    let filtered = users;
+
+    if (selectedCountry !== "ALL") {
+      filtered = filtered.filter(
+        (user: any) => user.country === selectedCountry
+      );
+    }
+
+    if (selectedDepartment !== "ALL") {
+      filtered = filtered.filter(
+        (user: any) => user.department === selectedDepartment
+      );
+    }
+
+    if (selectedStatus !== "ALL") {
+      filtered = filtered.filter((user: any) => user.status === selectedStatus);
+    }
+
+    setFilteredUsers(filtered);
+  };
+
+  useEffect(() => {
+    filterUsers();
+  }, [selectedCountry, selectedDepartment, selectedStatus, users]);
+
+  const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCountry(e.target.value);
+  };
+
+  const handleDepartmentChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedDepartment(e.target.value);
+  };
+
+  const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedStatus(e.target.value);
+  };
+
+  const resetFilters = () => {
+    setFilteredUsers(users);
+    setSelectedCountry("ALL");
+    setSelectedStatus("ALL");
+    setSelectedDepartment("ALL");
+  };
+
+  const deleteUser = (id: number) => {
+    const updatedUsers = filteredUsers.filter((user) => user.id !== id);
+    setFilteredUsers(updatedUsers);
+    setUsers(updatedUsers);
+  };
+
+  const toggleModalWindow = () => {
+    setModalWindowToggle(!modalWindowToggle);
+  };
 
   return (
     <>
-      <div className="users-add">
-        <div className="users-inner">
-          <div className="users-title">
-            <h1 className="users-title-text">USERS</h1>
-          </div>
-          <div className="warning-about-steps">
-            <p className="warning-text">
-              Please add at least 3 departmetns to be able to proceed next
-              steps.
-            </p>
-          </div>
+    <div className={`users-add ${modalWindowToggle ? 'dimmed' : ''}`}>
+      <div className="users-inner">
+        <h1 className="users-title-text">USERS</h1>
+        <p className="warning-text">
+          Please add at least 3 departments to be able to proceed to the next steps.
+        </p>
 
-          <div className="filter-choice">
-            <div className="selection-field">
-              <select className="select-field">
-                {selectCountry.map((item) => (
-                  <option className="option-item">{item.name}</option>
-                ))}
-              </select>
-            </div>
+        <div className="filter-choice">
+          <select className="select-field" onChange={handleCountryChange}>
+            <option value="ALL">All Countries</option>
+            {countries.map((item: any) => (
+              <option key={item.id} value={item.value}>
+                {item.name}
+              </option>
+            ))}
+          </select>
 
-            <div className="selection-field">
-              <select className="select-field">
-                {countrySelect.map((item) => (
-                  <option className="option-item">{item.name}</option>
-                ))}
-              </select>
-            </div>
+          <select className="select-field" onChange={handleDepartmentChange}>
+            <option value="ALL">All Departments</option>
+            {departments.map((item: any) => (
+              <option key={item.value} value={item.value}>
+                {item.name}
+              </option>
+            ))}
+          </select>
 
-            <div className="selection-field">
-              <select className="select-field">
-                {statuses.map((item) => (
-                  <option className="option-item">{item.name}</option>
-                ))}
-              </select>
-            </div>
+          <select className="select-field" onChange={handleStatusChange}>
+            <option value="ALL">All Statuses</option>
+            {statuses.map((item: any) => (
+              <option key={item.id} value={item.value}>
+                {item.name}
+              </option>
+            ))}
+          </select>
 
-            <div className="reset-changes">
-              <button className="reset-changes-btn">
-                <img src={busketSvg} />
-              </button>
-            </div>
+          <button className="reset-changes-btn" onClick={resetFilters}>
+            <img src={busketSvg} alt="reset" />
+          </button>
 
-            <div className="add-user">
-              <button className="add-user-btn">Add User</button>
-            </div>
-          </div>
-
-          <div className="filter-window">
-            <div className="filter-field">
-              <div className="full-name">
-                <p className="filter-title">Full Name</p>
-              </div>
-              <div className="filter-field">
-                <p className="filter-title">Departament</p>
-              </div>
-            </div>
-
-            <div className="filter-field">
-              <div className="filter-field">
-                <p className="filter-title">Country</p>
-              </div>
-              <div>
-                <p className="filter-title">Status</p>
-              </div>
-            </div>
-          </div>
-
-
-
-
-
-          
-
-          
+          <button className="add-user-btn" onClick={toggleModalWindow}>
+            Add User
+          </button>
         </div>
+
+        <table className="user-table">
+          <thead className="users">
+            <tr className="users-items">
+              <th className="users-item">Full Name</th>
+              <th className="users-item">Department</th>
+              <th className="users-item">Country</th>
+              <th className="users-item">Status</th>
+              <th className="users-item">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredUsers.map((item: any) => (
+              <tr key={item.id}>
+                <td className="user-field">{item.fullName}</td>
+                <td className="user-field-item">{item.department}</td>
+                <td className="user-field-item">{item.country}</td>
+                <td className="user-field-item">{item.status}</td>
+                <td className="user-field-item-btn">
+                  <button
+                    className="user-field-item-btn-delete"
+                    onClick={() => deleteUser(item.id)}
+                  >
+                    <img src={busketSvg} alt="delete" />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-    </> 
+    </div>
+     {modalWindowToggle && <AddUser />}
+    </>
   );
 };
 

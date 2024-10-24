@@ -1,0 +1,75 @@
+.add-userField {
+    background-color: white;
+    height: 444px;
+    position: absolute;
+    top: 120px;
+    left: 50px;
+    right: 50px;
+    border: solid black 1px;
+    width: 720px;
+    margin: 0 auto;
+
+    .add-user-field-item {
+        margin-top: 40px;
+        display: flex;
+        gap: 40px;
+        justify-content: center;
+    }
+
+    .add-user-text {
+        margin-top: 40px;
+        text-align: center;
+        font-family: "Rubik", sans-serif;
+        font-size: 24px;
+        font-weight: 500;
+        color: #000000;
+    }
+
+    .left-inputs {
+        display: flex;
+        flex-direction: column;
+
+        .add-user-item-field {
+            margin-top: 20px;
+
+            .add-user-item-field-text {
+                font-weight: 400;
+                font-size: 14px;
+                color: #5E626B;
+                font-family: "Rubik", sans-serif;
+            }
+
+            .add-user-inp {
+                width: 280px;
+                height: 48px;
+                margin-top: 8px;
+                padding-left: 24px;
+                font-family: "Rubik", sans-serif;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .btns-add-save {
+        margin-top: 60px;
+        display: flex;
+        gap: 20px;
+        justify-content: flex-end;
+        margin-right: 60px;
+
+        .add-save-btn {
+            padding: 14px 27px 14px 27px;
+            font-weight: 300;
+            font-family: "Rubik", sans-serif;
+            color: #000000;
+            border: solid #C4C4C4 1px;
+            font-size: 14px;
+            background-color: inherit;
+        }
+
+        .btn-add {
+
+            padding: 14px 62px 14px 62px;
+        }
+    }
+}

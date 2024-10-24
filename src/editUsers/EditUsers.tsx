@@ -125,7 +125,7 @@ const EditUsers = () => {
   };
 
   const resetChanges = () => {
-    setSelectedUser(null); // Обнуляем выбранного пользователя
+    setSelectedUser(null); 
     setIsDisabled(true);
   };
 
